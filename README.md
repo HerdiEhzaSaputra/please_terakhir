@@ -9,4 +9,5 @@ Berikut ini to do list for !this App
 
 | Feature | Keterangan |
 | ------ | ------ |
-| User Store | Tidak Sesuai Field Database |
+| User Store | Sudah Sesuai Field Database (di nullable) |
+| User Interface | User Management udah aman |
