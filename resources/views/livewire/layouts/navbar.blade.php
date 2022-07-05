@@ -126,8 +126,37 @@
                 </x-slot>
 
                 <x-slot name="content">
+                    <div class="divide-y divide-gray-200 dark:divide-gray-600">
+                        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                            <div>{{ Auth::user()->name }}</div>
+                            <div class="font-medium truncate">{{ Auth::user()->email }}</div>
+                        </div>
+                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+                            <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                            </li>
+                        </ul>
+                        <div class="py-1">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a href="route('logout')"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </a>
+                            </form>
+                        </div>
+                    </div>
                     <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
+                    {{-- <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
                         <x-dropdown-link :href="route('logout')"
@@ -135,7 +164,7 @@
                                             this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-dropdown-link>
-                    </form>
+                    </form> --}}
                 </x-slot>
             </x-dropdown>
         </div>

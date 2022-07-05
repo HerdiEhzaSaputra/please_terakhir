@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUsersRequest;
 use App\Http\Requests\Admin\UpdateUsersRequest;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -54,9 +56,24 @@ class UsersController extends Controller
         if (! Gate::allows('edit_users')) {
             return abort(401);
         }
-        $user = User::create($request->all());
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'roles' => ['required']
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $user->assignRole($roles);
+
+        $user->save();
 
         return redirect()->route('admin.users.index');
     }
@@ -85,13 +102,20 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUsersRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
         if (! Gate::allows('edit_users')) {
             return abort(401);
         }
 
-        $user->update($request->all());
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        if($request->input('password'))
+        {
+            $user->password = Hash::make($request->input('password'));
+        }
+        $user->update();
+
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $user->syncRoles($roles);
 

@@ -6,6 +6,12 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+$(".btn-dropdown").click(function () {
+    let $select2 = $(this).parent().siblings("#dropdown-arrow");
+    $select2.find("option").prop("selected", "selected");
+    $select2.trigger("change");
+});
+
 // unhide sidebar
 document.getElementById("sidebarOpen").addEventListener("click", function () {
     document.getElementById("sidebar").classList.remove("hidden");

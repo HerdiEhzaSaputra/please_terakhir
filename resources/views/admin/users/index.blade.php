@@ -1,18 +1,25 @@
 <x-app-layout>
+    <x-slot name="title">
+        {{ __('cruds.user.title_singular') }} {{ __('global.list') }}
+    </x-slot>
+
     @can('edit_users')
         <div class="row">
             <div class="col-lg-12">
                 <a href="{{ route('admin.users.create') }}">
                     <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                        {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
+                        {{ __('global.add') }} {{ __('cruds.user.title_singular') }}
                     </button>
                 </a>
             </div>
         </div>
     @endcan
+
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">{{ trans('cruds.user.title_singular') }} {{ trans('global.list') }}</h3>
+        <div class="px-4 py-5 sm:px-6 border-b">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                {{ __('cruds.user.title_singular') }} {{ __('global.list') }}
+            </h3>
             <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
         </div>
 
@@ -28,16 +35,16 @@
                                 </div>
                             </th>
                             <th scope="col" class="px-6 py-3" width="10">
-                                {{ trans('cruds.user.fields.id') }}
+                                {{ __('cruds.user.fields.id') }}
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                {{ trans('cruds.user.fields.name') }}
+                                {{ __('cruds.user.fields.name') }}
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                {{ trans('cruds.user.fields.email') }}
+                                {{ __('cruds.user.fields.email') }}
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                {{ trans('cruds.user.fields.roles') }}
+                                {{ __('cruds.user.fields.roles') }}
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 &nbsp;
@@ -67,7 +74,7 @@
                                         <span class="label-role">{{ $role }}</span>
                                     @endforeach
                                 </td>
-                                <td class="px-4 py-4 text-right">
+                                <td class="px-4 py-4 text-right min-w-[140px]">
                                     <a href="{{ route('admin.users.show', $user->id) }}">
                                         <button type="button" class="btn-view">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -86,7 +93,7 @@
                                     </a>
 
                                     <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
-                                        onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
+                                        onsubmit="return confirm('{{ __('global.areYouSure') }}');"
                                         style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -115,9 +122,9 @@
         $(function() {
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
             @can('edit_users')
-                let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+                let deleteButton__ = '{{ __('global.datatables.delete') }}'
                 let deleteButton = {
-                    text: deleteButtonTrans,
+                    text: deleteButton__,
                     url: "{{ route('admin.users.mass_destroy') }}",
                     className: 'btn-danger',
                     action: function(e, dt, node, config) {
@@ -128,12 +135,12 @@
                         });
 
                         if (ids.length === 0) {
-                            alert('{{ trans('global.datatables.zero_selected') }}')
+                            alert('{{ __('global.datatables.zero_selected') }}')
 
                             return
                         }
 
-                        if (confirm('{{ trans('global.areYouSure') }}')) {
+                        if (confirm('{{ __('global.areYouSure') }}')) {
                             $.ajax({
                                     headers: {
                                         'x-csrf-token': _token

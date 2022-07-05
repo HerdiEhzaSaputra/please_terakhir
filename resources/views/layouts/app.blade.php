@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@isset($title) {{ $title }} | @endisset{{ config('app.name', 'Laravel') }}</title>
 
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
@@ -32,34 +32,31 @@
     </script>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased overflow-y-hidden">
     <div x-data="{ sidebarOpen: false }" class="flex h-screen">
 
         <div id="backdrop" :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="hidden fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
 
         <livewire:layouts.sidebar />
 
-            <div class="flex-1 flex flex-col overflow-hidden">
+            <div class="flex-1 flex flex-col">
 
                 <livewire:layouts.navbar />
 
                 <!-- Page Heading -->
-                {{-- @isset($header)
+                {{-- @isset($title)
                     <header class="bg-white dark:bg-gray-800 shadow">
                         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                                    {{ $header }}
+                                    {{ $title }}
                                 </h2>
                         </div>
                     </header>
                 @endisset --}}
 
                 <!-- Page Content -->
-                <main class="flex-1 overflow-x-hidden overflow-y-auto px-4 py-4 dark:bg-gray-800">
-                    {{-- <x-alert /> --}}
-
+                <main class="flex-1 px-4 py-4 dark:bg-gray-800 overflow-y-auto">
                     {{ $slot }}
-
                 </main>
             </div>
         </div>
