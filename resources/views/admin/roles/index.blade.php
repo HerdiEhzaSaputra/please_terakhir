@@ -1,4 +1,8 @@
 <x-app-layout>
+    <x-slot name="title">
+        {{ __('cruds.role.title_singular') }} {{ __('global.list') }}
+    </x-slot>
+
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a href="{{ route('admin.roles.create') }}">

@@ -43,6 +43,8 @@
 
                 <livewire:layouts.navbar />
 
+
+
                 <!-- Page Heading -->
                 {{-- @isset($title)
                     <header class="bg-white dark:bg-gray-800 shadow">

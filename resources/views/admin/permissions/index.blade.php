@@ -1,4 +1,8 @@
 <x-app-layout>
+    <x-slot name="title">
+        {{ __('cruds.permission.title_singular') }} {{ __('global.list') }}
+    </x-slot>
+
     <div class="row">
         <div class="col-lg-12">
             <a href="{{ route('admin.permissions.create') }}">

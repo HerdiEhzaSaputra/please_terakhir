@@ -2,7 +2,7 @@
     <ul class="space-y-2">
         <li>
             <a href="{{ route('dashboard') }}"
-                class="{{ request()->is('dashboard') ? 'nav-button-active text-white dark:text-gray-800 dark:bg-gray-200' : 'nav-button' }} flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                class="{{ request()->is('dashboard') ? 'nav-button-active dark:text-gray-800 dark:bg-gray-200' : 'text-white nav-button' }} flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <svg class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -19,9 +19,7 @@
                     <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                 </svg>
                 <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Manage Users</span>
-                <svg x-show="open"
-                    sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                         clip-rule="evenodd"></path>
@@ -31,15 +29,15 @@
                 @can('edit_users')
                 <li>
                     <a href="{{ route('admin.users.index') }}"
-                        class="{{ request()->is('admin/users*') ? 'nav-button-active text-white dark:text-gray-800 dark:bg-gray-200' : 'nav-button' }} flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group dark:text-white dark:hover:bg-gray-700">Users</a>
+                        class="{{ request()->is('admin/users*') ? 'nav-button-active dark:text-gray-800 dark:bg-gray-200' : 'text-white nav-button' }} flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group dark:text-white dark:hover:bg-gray-700">Users</a>
                 </li>
                 <li>
                     <a href="{{ route('admin.roles.index') }}"
-                        class="{{ request()->is('admin/roles*') ? 'nav-button-active text-white dark:text-gray-800 dark:bg-gray-200' : 'nav-button' }} flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group dark:text-white dark:hover:bg-gray-700">Roles Assigment</a>
+                        class="{{ request()->is('admin/roles*') ? 'nav-button-active dark:text-gray-800 dark:bg-gray-200' : 'text-white nav-button' }} flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group dark:text-white dark:hover:bg-gray-700">Roles Assigment</a>
                 </li>
                 <li>
                     <a href="{{ route('admin.permissions.index') }}"
-                        class="{{ request()->is('admin/permissions*') ? 'nav-button-active text-white dark:text-gray-800 dark:bg-gray-200' : 'nav-button' }} flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group dark:text-white dark:hover:bg-gray-700">Permissions</a>
+                        class="{{ request()->is('admin/permissions*') ? 'nav-button-active dark:text-gray-800 dark:bg-gray-200' : 'text-white nav-button' }} flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group dark:text-white dark:hover:bg-gray-700">Permissions</a>
                 </li>
                 @endcan
             </ul>
