@@ -19,6 +19,9 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 
     <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
 
@@ -58,7 +61,9 @@
 
                 <!-- Page Content -->
                 <main class="flex-1 px-4 py-4 dark:bg-gray-800 overflow-y-auto">
+
                     {{ $slot }}
+
                 </main>
             </div>
         </div>

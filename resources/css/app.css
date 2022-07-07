@@ -427,22 +427,6 @@
     .form-input {
         @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
     }
-    .nav-button,
-    .nav-button-active {
-        @apply px-3 py-2 rounded-md text-sm font-medium text-gray-300;
-    }
-    .nav-button-active {
-        @apply text-white bg-gray-800;
-    }
-
-    .nav-button:focus,
-    .nav-button-active:focus {
-        @apply outline-none text-white bg-gray-700;
-    }
-
-    .nav-button:hover {
-        @apply text-white bg-gray-700;
-    }
 
     .th {
         @apply px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider;

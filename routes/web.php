@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\PermissionsController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,19 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+// Route::resource('setting', SettingController::class,
+//     [
+//     'names' => [
+//         'profile' => 'setting.profile',
+//         'dashboard' => 'setting.dashboard',
+//         'settings' => 'setting.settings',
+//         // etc...
+//     ]
+// ]);
+Route::get('setting/profile', [SettingController::class, 'profile'])->name('setting.profile');
+Route::get('setting/dashboard', [SettingController::class, 'dashboard'])->name('setting.dashboard');
+Route::get('setting/settings', [SettingController::class, 'settings'])->name('setting.settings');
 
 Route::get('change_password', 'Auth\ChangePasswordController@showChangePasswordForm')->name('auth.change_password');
 Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')->name('auth.change_password');
