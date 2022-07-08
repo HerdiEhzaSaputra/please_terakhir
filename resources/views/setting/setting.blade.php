@@ -29,9 +29,9 @@
     </button>
 
     @if (count(config('panel.available_languages', [])) > 1)
-            @foreach (config('panel.available_languages') as $langLocale => $langName)
+        @foreach (config('panel.available_languages') as $langLocale => $langName)
 
-            @endforeach
+        @endforeach
 
         <div class="flex px-4 py-2 text-sm leading-5 text-gray-700 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
             <a class="p-3 bg-transparent focus:outline-none focus:bg-blue-700 active:bg-blue-500 {{ strtoupper(app()->getLocale()) === strtoupper('id')? 'bg-blue-600 text-white hover:bg-blue-600': 'text-grey-700' }}"

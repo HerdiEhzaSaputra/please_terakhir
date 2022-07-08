@@ -23,8 +23,6 @@
         [x-cloak] { display: none !important; }
     </style>
 
-    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
-
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem('theme-preference') === 'dark' || (!('theme-preference' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -45,8 +43,6 @@
             <div class="flex-1 flex flex-col">
 
                 <livewire:layouts.navbar />
-
-
 
                 <!-- Page Heading -->
                 {{-- @isset($title)
@@ -80,7 +76,6 @@
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
@@ -180,6 +175,8 @@
         });
     </script>
     @yield('scripts')
+
+    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
 
     @livewireScripts
 </body>
